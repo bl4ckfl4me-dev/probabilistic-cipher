@@ -46,8 +46,8 @@ class MainWindow(QWidget):
         plaintext = self.plaintext_input.text()
         key = generate_key(len(plaintext))
 
-        ciphertext = probabilistic_cipher_encrypt(plaintext, key)
-        decrypted_text = probabilistic_cipher_decrypt(ciphertext, key)
+        ciphertext, offsets = probabilistic_cipher_encrypt(plaintext, key)
+        decrypted_text = probabilistic_cipher_decrypt(ciphertext, key, offsets)
 
         self.ciphertext_output.setText(ciphertext)
         self.key_output.setText(f'Ключ: {key}')
